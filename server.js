@@ -77,7 +77,7 @@ const io = new Server(server,{
 //                }))
 // app.use(passport.initialize());
 // app.use(passport.session());
-app.use(cors({ origin: "http://localhost:8080", credentials: true }))
+app.use(cors({  origin: process.env.NODE_ENV === 'development' ? process.env.DEV_URI :process.env.PROD_URI, credentials: true }))
 app.use(cookieparser())
 app.use(bodyparser.urlencoded({extended:true}))
 app.use(bodyparser.json())
